@@ -1,0 +1,5 @@
+{
+  "prefix": ["."],
+  "mongoUrl": "mongodb+srv://macellan:wex@macellan.pojov.mongodb.net/macellan?retryWrites=true&w=majority",
+  "owners": ["728161454288535604"]
+}

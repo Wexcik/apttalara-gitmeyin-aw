@@ -1,0 +1,216 @@
+const { MessageEmbed } = require("discord.js");
+const Database = require("quick.db");
+require("moment-duration-format");
+const moment = require("moment");
+require("../../wexab.js");
+exports.execute = async (client, message, args) => {
+  if(message.author.id !== "728161454288535604")  return message.react(client.emojis.cache.find(x => x.name === "wex_carpi"));
+  let embed = new MessageEmbed().setColor("RANDOM");
+  const sec = args[0]
+      
+      if (sec == "kayıtkanal" || sec == "registerchat" || sec == "kayıtkanal" || sec == "register-chat") {
+        const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+        if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+        Database.set(`register-chat.${message.guild.id}`, Channel.id)
+        return message.channel.send(`${Channel} kanalı Register-Chat kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+        //-
+        if (sec == "voice-mute-bilgi" || sec == "vmutebilgi" || sec == "sesmutelog" || sec == "vmutelog") {
+          const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+          if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+          Database.set(`voice-mute-bilgi-log.${message.guild.id}`, Channel.id) 
+          return message.channel.send(`${Channel} kanalı Voice-Mute-Log kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+            //-
+            if (sec == "chat-mute-bilgi" || sec == "cmutebilgi" || sec == "mesajmutelog" || sec == "cmutelog") {
+              const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+              if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+              Database.set(`chat-mute-bilgi-log.${message.guild.id}`, Channel.id) 
+              return message.channel.send(`${Channel} kanalı Chat-Mute-Log kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                //-
+                if (sec == "jail-bilgi" || sec == "jailbilgi" || sec == "jaillog" || sec == "cezalılog") {
+                  const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+                  if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                  Database.set(`jail-cezali-bilgi-log.${message.guild.id}`, Channel.id) 
+                  return message.channel.send(`${Channel} kanalı Cezalı-Jail'ed-Log kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                    //-
+                    if (sec == "ban-bilgi" || sec == "banbilgi" || sec == "banlog" || sec == "banlog") {
+                      const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+                      if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                      Database.set(`ban-yasaklama-bilgi-log.${message.guild.id}`, Channel.id) 
+                      return message.channel.send(`${Channel} kanalı Ban-Yasaklı-Log kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                        //-
+                        if (sec == "cpuan-bilgi" || sec == "cezapuan-log" || sec == "cpuanlog" || sec == "cezapuanbilgi") {
+                          const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+                          if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                          Database.set(`cezapuan-bilgi-log.${message.guild.id}`, Channel.id) 
+                          return message.channel.send(`${Channel} kanalı Ceza-Puan-Log kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                        //-
+                        if (sec == "giris-log" || sec == "güvenlik-log" || sec == "güvenliklog") {
+                          const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+                          if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                          Database.set(`guvenlik-giris-log.${message.guild.id}`, Channel.id) 
+                          return message.channel.send(`${Channel} kanalı Güvenlik-Giris-Log kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                                                  //-
+                        if (sec == "kpanel" || sec == "kullanıcıpanel" || sec == "kpanelkanal") {
+                          const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+                          if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                          Database.set(`sunucu.kullanıcı-panel-kanal.${message.guild.id}`, Channel.id) 
+                          return message.channel.send(`${Channel} kanalı Kullanıcı-Panel kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                         //-
+                          if (sec == "rolalma" || sec == "ecrolalma" || sec == "ecrolal") {
+                            const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+                            if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                            Database.set(`sunucu.rol-alma-kanal.${message.guild.id}`, Channel.id) 
+                            return message.channel.send(`${Channel} kanalı Rol-Alma kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+       //-
+                          if (sec == "rolsecim" || sec == "rsecimn" || sec == "rol-secim") {
+                            const Channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
+                            if (!Channel) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                            Database.set(`sunucu.rol-secim-kanal.${message.guild.id}`, Channel.id) 
+                            return message.channel.send(`${Channel} kanalı Rol-Seçim kanalı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+  
+                          //-
+                        if (sec == "tag" || sec == "sunucutag") {
+                          const Tag = args.slice(1).join(' ');
+                          if (!Tag) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                          Database.set(`sunucu-tagi.${message.guild.id}`, Tag) 
+                          return message.channel.send(`${Tag} Tagı Sunucu tagı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                          if (sec == "waynetag") {
+                            const Tag = args.slice(1).join(' ');
+                            if (!Tag) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                            Database.set(`sunucu-tagi-wayne.${message.guild.id}`, Tag) 
+                            return message.channel.send(`${Tag} Wayne Sunucusu tagı olarak tanımlandı.`), message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+  
+    //-
+                          if (sec == "erkek" || sec == "man" || sec == "Man") {
+                            let roles;
+                            if (message.mentions.roles.size >= 1) {
+                              roles = message.mentions.roles.map(r => r.id);
+                            } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                              roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                           Database.set(`erkek-roles.${message.guild.id}`, roles) 
+                            return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+      //-
+                          if (sec == "kadın" || sec == "woman" || sec == "Woman") {
+                            let roles;
+                            if (message.mentions.roles.size >= 1) {
+                              roles = message.mentions.roles.map(r => r.id);
+                            } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                              roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                           Database.set(`kadin-roles.${message.guild.id}`, roles) 
+                            return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+    //-
+                                if (sec == "unregister" || sec == "UNREGİSTER" || sec == "kayıtsız") {
+                                  const Role = message.mentions.roles.first()
+                                  if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                  Database.set(`unregisterRole-server.${message.guild.id}`, Role.id) 
+                                  return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                  //-
+                                  if (sec == "etkinlikkatılımcısı" || sec == "ekatılım" || sec == "etkatılım") {
+                                    const Role = message.mentions.roles.first()
+                                    if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                    Database.set(`sunucu-etklinlik-katilimcisi.${message.guild.id}`, Role.id) 
+                                    return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                    //-
+                                    if (sec == "çekiliskatılımcısı" || sec == "ckatılım" || sec == "çekatılım") {
+                                      const Role = message.mentions.roles.first()
+                                      if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                      Database.set(`sunucu-çekiliş-katilimcisi.${message.guild.id}`, Role.id) 
+                                      return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+  
+                                      //-
+                                if (sec == "muted" || sec == "cmuted" || sec == "chatmuted") {
+                                  const Role = message.mentions.roles.first()
+                                  if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                  Database.set(`chat-muted.${message.guild.id}`, Role.id) 
+                                  return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                      //-
+                                      if (sec == "vmuted" || sec == "vmuted" || sec == "voicemuted") {
+                                        const Role = message.mentions.roles.first()
+                                        if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                        Database.set(`voice-muted.${message.guild.id}`, Role.id) 
+                                        return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                                                              //-
+                                      if (sec == "booster" || sec == "boost" || sec == "zengin") {
+                                        const Role = message.mentions.roles.first()
+                                        if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                        Database.set(`sunucu-booster-role.${message.guild.id}`, Role.id) 
+                                        return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+
+                        //-
+                        if (sec == "botcommand" || sec == "botkomt" || sec == "bot-komut") {
+                          const Role = message.mentions.roles.first()
+                          if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                          Database.set(`sunucu-bot-komut-role.${message.guild.id}`, Role.id) 
+                          return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+
+                                  //-
+                                  if (sec == "şüpheli" || sec == "suspect" || sec == "Suspect") {
+                                    const Role = message.mentions.roles.first()
+                                    if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                    Database.set(`sunucu-supheli-rol.${message.guild.id}`, Role.id) 
+                                    return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                                                      //-
+                                  if (sec == "cezalı" || sec == "jailed" || sec == "jailrol") {
+                                    const Role = message.mentions.roles.first()
+                                    if (!Role) { return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                    Database.set(`jailed-rol.${message.guild.id}`, Role.id) 
+                                    return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                  //-
+    //-
+                          if (sec == "kayıt-sorumlusu" || sec == "registeraut" || sec == "register-yetkili") {
+                            let roles;
+                            if (message.mentions.roles.size >= 1) {
+                              roles = message.mentions.roles.map(r => r.id);
+                            } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                              roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                           Database.set(`kayıt-yetkil-aut.${message.guild.id}`, roles) 
+                            return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                //-
+                          if (sec == "ban-sorumlusu" || sec == "banyetkili" || sec == "ban-yetkili") {
+                            let roles;
+                            if (message.mentions.roles.size >= 1) {
+                              roles = message.mentions.roles.map(r => r.id);
+                            } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                              roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                           Database.set(`ban-yetkili-aut.${message.guild.id}`, roles) 
+                            return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                //-
+                                if (sec == "chat-sorumlusu" || sec == "muteyetkili" || sec == "mute-yetkili") {
+                                  let roles;
+                                  if (message.mentions.roles.size >= 1) {
+                                    roles = message.mentions.roles.map(r => r.id);
+                                  } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                    roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                                 Database.set(`chat-mute.yetkili-aut.${message.guild.id}`, roles) 
+                                  return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+                                  if (sec == "yönetim-rolleri" || sec == "ytroles" || sec == "yetkili-roller") {
+                                    let roles;
+                                    if (message.mentions.roles.size >= 1) {
+                                      roles = message.mentions.roles.map(r => r.id);
+                                    } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                      roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                                   Database.set(`yonetim-roles-yetkili-aut.${message.guild.id}`, roles) 
+                                    return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+  
+     //-
+                                if (sec == "ses-sorumlusu" || sec == "vmuteyetkili" || sec == "vmute-yetkili") {
+                                  let roles;
+                                  if (message.mentions.roles.size >= 1) {
+                                    roles = message.mentions.roles.map(r => r.id);
+                                  } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                    roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                                 Database.set(`voice-mute.yetkili-aut.${message.guild.id}`, roles) 
+                                  return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+           //-
+                                if (sec == "cezalı-sorumlusu" || sec == "jailyetkili" || sec == "jail-yetkili") {
+                                  let roles;
+                                  if (message.mentions.roles.size >= 1) {
+                                    roles = message.mentions.roles.map(r => r.id);
+                                  } else {if (!roles) {return message.react(`${client.emojis.cache.find(x => x.name === "wex_carpi")}`)}
+                                    roles = args.splice(0, 1).map(id => message.guild.roles.cache.get(id)).filter(r => r != undefined);}
+                                 Database.set(`jail-cezali.yetkili-aut.${message.guild.id}`, roles) 
+                                  return message.react(`${client.emojis.cache.find(x => x.name === "wex_tik")}`);}
+
+          
+  }
+exports.conf = { command: "kurulum", aliases: [], description: "Kurulum Komutu."}
